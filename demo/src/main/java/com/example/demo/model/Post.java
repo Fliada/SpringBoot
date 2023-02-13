@@ -1,8 +1,8 @@
 package com.example.demo.model;
 
 public class Post {
-    String text;
-    Integer likes;
+    private String text;
+    private Integer likes;
 
     public String getText() {
         return text.toString();
