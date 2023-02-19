@@ -1,28 +1,24 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Post;
+import com.example.demo.repository.PostRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import  com.example.demo.repository.PostRepository;
 
 @Service
 public class PostService {
-    ArrayList<Post> posts = new ArrayList<>();
-    private long newId = 0;
+    @Autowired
+    PostRepository postRepository;
 
-    public PostService() {
-        Collections.addAll(posts,
-                new Post(newId++, "afwa",    11),
-                new Post(newId++, "awdafw",  122),
-                new Post(newId++, "afawfafw",2424)
-        );
+    public Iterable<Post> listAllPosts () {
+        return postRepository.findAll();
     }
-
-    public List<Post> listAllPosts() {
-        return new ArrayList<>(posts);
-    }
-
-    public void create(String text) {
-        posts.add(new Post(newId++, text, new Date()));
+    public void create (String text) {
+        Post post = new Post(null, text, new Date());
+        postRepository.save(post);
     }
 }

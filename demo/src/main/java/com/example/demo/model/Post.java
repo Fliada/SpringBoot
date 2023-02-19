@@ -1,36 +1,46 @@
 package com.example.demo.model;
 
+
+import jakarta.persistence.*;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class Post {
-    private String  text;
-    private Integer likes;
-    private Date    creationDate;
-    private Long    id;
+    @Entity
+    public class Post {
+        private String text;
+        private Integer likes;
+        private Date creationDate;
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        private Long id;
 
-    public Date getCreationDate() { return (Date)creationDate.clone(); }
+        public Date getCreationDate() {
+            return creationDate;
+        }
 
-    public String getText() {
-        return text.toString();
+        public String getText() {
+            return text;
+        }
+
+        public Integer getLikes() {
+            return likes;
+        }
+
+        public Long getId() {
+            return id;
+        }
+
+        public void setLikes(Integer likes) {
+            this.likes = likes;
+        }
+
+        public Post() { }
+
+        public Post(Long id, String text, Date creationDate) {
+            this.id = id;
+            this.text = text;
+            this.creationDate = creationDate;
+            this.likes = 0;
+        }
     }
-
-    public int getLikes() {
-        return likes.intValue();
-    }
-    public long getId() { return id.longValue(); }
-    public void setLikes(Integer likes) { this.likes = likes; }
-
-    public Post(long id, String text, int likes) {
-        this.text =         text;
-        this.likes =        likes;
-        this.id =           id;
-        creationDate = new Date();
-    }
-
-    public Post(long id, String text, Date creationDate) {
-        this.text =         text;
-        this.creationDate = creationDate;
-        this.id =           id;
-        likes =             0;
-    }
-}
