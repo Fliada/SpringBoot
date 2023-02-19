@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-    <h1 th:text="${appName}" style="color: green">Default app name</h1>
+    <h1 th:text="${appName}" style="color: blueviolet">Default app name</h1>
     <hr/>
     <div class="content">
         <div class="row article" th:each="post : ${posts}">
@@ -19,7 +19,7 @@
                 <p class="description-text" th:text="${post.text}">Text</p>
             </div>
             <div class="col-md-1">
-                <button class="btn btn-sm btn-secondary like" th:text="${post.likes + ' 🖤'}">0 🖤</button>
+                <button class="btn btn-sm btn-secondary like" th:text="${post.likes + ' 👾'}">0 👾</button>
             </div>
             <div class="col-md-12">
                 <hr/>
